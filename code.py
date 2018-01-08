@@ -17,37 +17,44 @@ for item in rain:
         seattle_precipitation.append(item)
 
 seattle_by_month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]    
-
-for item in seattle_precipitation:
-    if item["date"][5:7] == "01":
-        seattle_by_month[0] += item["value"]
-    elif item["date"][5:7] == "02":
-        seattle_by_month[1] += item["value"]
-    elif item["date"][5:7] == "03":
-        seattle_by_month[2] += item["value"]
-    elif item["date"][5:7] == "04":
-        seattle_by_month[3] += item["value"]
-    elif item["date"][5:7] == "05":
-        seattle_by_month[4] += item["value"]
-    elif item["date"][5:7] == "06":
-        seattle_by_month[5] += item["value"]
-    elif item["date"][5:7] == "07":
-        seattle_by_month[6] += item["value"]
-    elif item["date"][5:7] == "08":
-        seattle_by_month[7] += item["value"]
-    elif item["date"][5:7] == "09":
-        seattle_by_month[8] += item["value"]
-    elif item["date"][5:7] == "10":
-        seattle_by_month[9] += item["value"]
-    elif item["date"][5:7] == "11":
-        seattle_by_month[10] += item["value"]
-    elif item["date"][5:7] == "12":
-        seattle_by_month[11] += item["value"]
+# later in the code, I was given an error message unless there were 
+# values within the list for the indices I was referencing
+def monthlytotals(location, monthlist):
+    for item in location:
+        if item["date"][5:7] == "01":
+            monthlist[0] += item["value"]
+        elif item["date"][5:7] == "02":
+                monthlist[1] += item["value"]
+        elif item["date"][5:7] == "03":
+                    monthlist[2] += item["value"]
+        elif item["date"][5:7] == "04":
+                        monthlist[3] += item["value"]
+        elif item["date"][5:7] == "05":
+            monthlist[4] += item["value"]
+        elif item["date"][5:7] == "06":
+            monthlist[5] += item["value"]
+        elif item["date"][5:7] == "07":
+            monthlist[6] += item["value"]
+        elif item["date"][5:7] == "08":
+            monthlist[7] += item["value"]
+        elif item["date"][5:7] == "09":
+            monthlist[8] += item["value"]
+        elif item["date"][5:7] == "10":
+            monthlist[9] += item["value"]
+        elif item["date"][5:7] == "11":
+            monthlist[10] += item["value"]
+        elif item["date"][5:7] == "12":
+            monthlist[11] += item["value"]
+# after much testing, I was able to specify characters within a key's value
+# and using the '+=' function with the list created above allowed me to create
+# monthly totals on specific values, even if the coding itself is very much
+# a product of just brute force effort
+monthlytotals(seattle_precipitation, seattle_by_month)
 
 seattle_year = sum(seattle_by_month)
 
 seattle_relative = []
-
+# for the percentages
 for item in seattle_by_month:
     seattle_relative.append(item/seattle_year)
 
@@ -59,31 +66,7 @@ for item in rain:
 
 cin_by_month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]    
 
-for item in cin_precipitation:
-    if item["date"][5:7] == "01":
-        cin_by_month[0] += item["value"]
-    elif item["date"][5:7] == "02":
-        cin_by_month[1] += item["value"]
-    elif item["date"][5:7] == "03":
-        cin_by_month[2] += item["value"]
-    elif item["date"][5:7] == "04":
-        cin_by_month[3] += item["value"]
-    elif item["date"][5:7] == "05":
-        cin_by_month[4] += item["value"]
-    elif item["date"][5:7] == "06":
-        cin_by_month[5] += item["value"]
-    elif item["date"][5:7] == "07":
-        cin_by_month[6] += item["value"]
-    elif item["date"][5:7] == "08":
-        cin_by_month[7] += item["value"]
-    elif item["date"][5:7] == "09":
-        cin_by_month[8] += item["value"]
-    elif item["date"][5:7] == "10":
-        cin_by_month[9] += item["value"]
-    elif item["date"][5:7] == "11":
-        cin_by_month[10] += item["value"]
-    elif item["date"][5:7] == "12":
-        cin_by_month[11] += item["value"]
+monthlytotals(cin_precipitation, cin_by_month)
 
 cin_year = sum(cin_by_month)
 
@@ -100,31 +83,7 @@ for item in rain:
 
 maui_by_month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]    
 
-for item in maui_precipitation:
-    if item["date"][5:7] == "01":
-        maui_by_month[0] += item["value"]
-    elif item["date"][5:7] == "02":
-        maui_by_month[1] += item["value"]
-    elif item["date"][5:7] == "03":
-        maui_by_month[2] += item["value"]
-    elif item["date"][5:7] == "04":
-        maui_by_month[3] += item["value"]
-    elif item["date"][5:7] == "05":
-        maui_by_month[4] += item["value"]
-    elif item["date"][5:7] == "06":
-        maui_by_month[5] += item["value"]
-    elif item["date"][5:7] == "07":
-        maui_by_month[6] += item["value"]
-    elif item["date"][5:7] == "08":
-        maui_by_month[7] += item["value"]
-    elif item["date"][5:7] == "09":
-        maui_by_month[8] += item["value"]
-    elif item["date"][5:7] == "10":
-        maui_by_month[9] += item["value"]
-    elif item["date"][5:7] == "11":
-        maui_by_month[10] += item["value"]
-    elif item["date"][5:7] == "12":
-        maui_by_month[11] += item["value"]
+monthlytotals(maui_precipitation, maui_by_month)
 
 maui_year = sum(maui_by_month)
 
@@ -141,31 +100,7 @@ for item in rain:
 
 san_diego_by_month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]    
 
-for item in san_diego_precipitation:
-    if item["date"][5:7] == "01":
-        san_diego_by_month[0] += item["value"]
-    elif item["date"][5:7] == "02":
-        san_diego_by_month[1] += item["value"]
-    elif item["date"][5:7] == "03":
-        san_diego_by_month[2] += item["value"]
-    elif item["date"][5:7] == "04":
-        san_diego_by_month[3] += item["value"]
-    elif item["date"][5:7] == "05":
-        san_diego_by_month[4] += item["value"]
-    elif item["date"][5:7] == "06":
-        san_diego_by_month[5] += item["value"]
-    elif item["date"][5:7] == "07":
-        san_diego_by_month[6] += item["value"]
-    elif item["date"][5:7] == "08":
-        san_diego_by_month[7] += item["value"]
-    elif item["date"][5:7] == "09":
-        san_diego_by_month[8] += item["value"]
-    elif item["date"][5:7] == "10":
-        san_diego_by_month[9] += item["value"]
-    elif item["date"][5:7] == "11":
-        san_diego_by_month[10] += item["value"]
-    elif item["date"][5:7] == "12":
-        san_diego_by_month[11] += item["value"]
+monthlytotals(san_diego_precipitation, san_diego_by_month)
 
 san_diego_year = sum(san_diego_by_month)
 
