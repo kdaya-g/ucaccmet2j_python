@@ -16,19 +16,16 @@ for item in rain:
     if item["station"] == "GHCND:US1WAKG0038":
         seattle_precipitation.append(item)
 
-seattle_by_month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]    
-# later in the code, I was given an error message unless there were 
-# values within the list for the indices I was referencing
 def monthlytotals(location, monthlist):
     for item in location:
         if item["date"][5:7] == "01":
             monthlist[0] += item["value"]
         elif item["date"][5:7] == "02":
-                monthlist[1] += item["value"]
+            monthlist[1] += item["value"]
         elif item["date"][5:7] == "03":
-                    monthlist[2] += item["value"]
+            monthlist[2] += item["value"]
         elif item["date"][5:7] == "04":
-                        monthlist[3] += item["value"]
+            monthlist[3] += item["value"]
         elif item["date"][5:7] == "05":
             monthlist[4] += item["value"]
         elif item["date"][5:7] == "06":
@@ -49,15 +46,22 @@ def monthlytotals(location, monthlist):
 # and using the '+=' function with the list created above allowed me to create
 # monthly totals on specific values, even if the coding itself is very much
 # a product of just brute force effort
+# defining this type-heavy section as a function saves a lot of time later
+# even tho I could just take the code into notepad and use find & replace
+seattle_by_month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]    
+# later in the code, I was given an error message unless there were 
+# values within the list for the indices I was referencing
+
 monthlytotals(seattle_precipitation, seattle_by_month)
 
 seattle_year = sum(seattle_by_month)
 
 seattle_relative = []
-# for the percentages
+# for a list of the percentages throughout the year
 for item in seattle_by_month:
     seattle_relative.append(item/seattle_year)
 
+# SAME BUT FOR CINCINNATI
 cin_precipitation = []
 
 for item in rain:
@@ -75,6 +79,7 @@ cin_relative = []
 for item in cin_by_month:
     cin_relative.append(item/cin_year)
 
+# SAME BUT FOR MAUI
 maui_precipitation = []
 
 for item in rain:
@@ -92,6 +97,7 @@ maui_relative = []
 for item in maui_by_month:
     maui_relative.append(item/maui_year)
     
+# SAME BUT FOR SAN DIEGO    
 san_diego_precipitation = []
 
 for item in rain:
@@ -108,7 +114,8 @@ san_diego_relative = []
 
 for item in san_diego_by_month:
     san_diego_relative.append(item/san_diego_year)
-    
+
+# FOR ANNUAL DISTRIBUTION    
 all_year = [seattle_year, cin_year, maui_year, san_diego_year]
 total_precipitation_year = sum(all_year)
 total_relative = []
