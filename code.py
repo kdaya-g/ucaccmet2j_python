@@ -122,3 +122,23 @@ total_relative = []
 
 for item in all_year:
     total_relative.append(item/total_precipitation_year)
+    
+
+print(seattle_by_month)
+print(seattle_year)
+print(seattle_relative)
+
+print(cin_by_month)
+print(cin_year)
+print(cin_relative)
+
+print(maui_by_month)
+print(maui_year)
+print(maui_relative)
+
+print(san_diego_by_month)
+print(san_diego_year)
+print(san_diego_relative)
+
+print(all_year)
+print(total_relative)
